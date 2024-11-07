@@ -1,0 +1,453 @@
+theory:
+  camb:
+    version: 1.5.8
+    path: null
+    speed: 0.3
+    stop_at_error: false
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      nnu: 3.044
+      theta_H0_range:
+      - 20
+      - 100
+    ignore_obsolete: false
+    use_renames: false
+    external_primordial_pk: false
+    renames:
+      omegabh2: ombh2
+      omegach2: omch2
+      omegal: omega_de
+      omegak: omk
+      yhe: YHe
+      yheused: YHe
+      YpBBN: Y_p
+    input_params:
+    - As
+    - ns
+    - cosmomc_theta
+    - ombh2
+    - omch2
+    - mnu
+    - tau
+    output_params:
+    - H0
+    - omegam
+    - omega_de
+    - YHe
+    - Y_p
+    - zrei
+    - sigma8
+    - age
+    - rdrag
+    - DH
+likelihood:
+  spt3g_2020.TEEE:
+    path: null
+    bp_file: SPT3G_Y1_EETE_bandpowers.dat
+    cov_file: SPT3G_Y1_EETE_covariance.dat
+    beam_cov_file: SPT3G_Y1_EETE_beam_covariance.dat
+    calib_cov_file: SPT3G_Y1_EETE_cal_covariance.dat
+    window_dir: windows
+    spectra_to_fit:
+    - 90_Ex90_E
+    - 90_Tx90_E
+    - 90_Ex150_E
+    - 90_Tx150_E
+    - 90_Ex220_E
+    - 90_Tx220_E
+    - 150_Ex150_E
+    - 150_Tx150_E
+    - 150_Ex220_E
+    - 150_Tx220_E
+    - 220_Ex220_E
+    - 220_Tx220_E
+    bin_min: 1
+    bin_max: 44
+    windows_lmin: 1
+    windows_lmax: 3200
+    aberration_coefficient: -0.0004826
+    super_sample_lensing: true
+    poisson_switch: true
+    dust_switch: true
+    beam_cov_scaling: 1.0
+    nu_eff_list:
+      90: 96.7027
+      150: 149.9942
+      220: 222.0433
+    data_folder: spt3g_2018/EETE/SPT3G_2018_EETE_likelihood_v3/data/SPT3G_Y1_EETE
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - kappa
+    - Dl_Poisson_90x90
+    - Dl_Poisson_90x150
+    - Dl_Poisson_90x220
+    - Dl_Poisson_150x150
+    - Dl_Poisson_150x220
+    - Dl_Poisson_220x220
+    - TDust
+    - ADust_TE_150
+    - BetaDust_TE
+    - AlphaDust_TE
+    - ADust_EE_150
+    - BetaDust_EE
+    - AlphaDust_EE
+    - mapTcal90
+    - mapTcal150
+    - mapTcal220
+    - mapPcal90
+    - mapPcal150
+    - mapPcal220
+    output_params: []
+params:
+  logA:
+    prior:
+      min: 1.61
+      max: 3.91
+    ref:
+      dist: norm
+      loc: 3.05
+      scale: 0.001
+    proposal: 0.001
+    latex: \log(10^{10} A_\mathrm{s})
+    drop: true
+  As:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_\mathrm{s}
+    derived: true
+  ns:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 0.965
+      scale: 0.004
+    proposal: 0.002
+    latex: n_\mathrm{s}
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04109
+      scale: 0.0004
+    proposal: 0.0002
+    latex: 100\theta_\mathrm{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+    derived: false
+  H0:
+    latex: H_0
+    min: 20
+    max: 100
+    derived: true
+  ombh2:
+    prior:
+      min: 0.005
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.0224
+      scale: 0.0001
+    proposal: 0.0001
+    latex: \Omega_\mathrm{b} h^2
+    renames:
+    - omegabh2
+  omch2:
+    prior:
+      min: 0.001
+      max: 0.99
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.001
+    proposal: 0.0005
+    latex: \Omega_\mathrm{c} h^2
+    renames:
+    - omegach2
+  omegam:
+    latex: \Omega_\mathrm{m}
+    derived: true
+  omegamh2:
+    derived: 'lambda omegam, H0: omegam*(H0/100)**2'
+    latex: \Omega_\mathrm{m} h^2
+  mnu:
+    value: 0.06
+  omega_de:
+    latex: \Omega_\Lambda
+    derived: true
+    renames:
+    - omegal
+  YHe:
+    latex: Y_\mathrm{P}
+    derived: true
+    renames:
+    - yhe
+    - yheused
+  Y_p:
+    latex: Y_P^\mathrm{BBN}
+    derived: true
+    renames:
+    - YpBBN
+  DHBBN:
+    derived: 'lambda DH: 10**5*DH'
+    latex: 10^5 \mathrm{D}/\mathrm{H}
+  tau:
+    prior:
+      dist: norm
+      loc: 0.054
+      scale: 0.0074
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.0074
+    proposal: 0.001
+    latex: \tau_\mathrm{reio}
+  zrei:
+    latex: z_\mathrm{re}
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  s8h5:
+    derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
+    latex: \sigma_8/h^{0.5}
+  s8omegamp5:
+    derived: 'lambda sigma8, omegam: sigma8*omegam**0.5'
+    latex: \sigma_8 \Omega_\mathrm{m}^{0.5}
+  s8omegamp25:
+    derived: 'lambda sigma8, omegam: sigma8*omegam**0.25'
+    latex: \sigma_8 \Omega_\mathrm{m}^{0.25}
+  A:
+    derived: 'lambda As: 1e9*As'
+    latex: 10^9 A_\mathrm{s}
+  clamp:
+    derived: 'lambda As, tau: 1e9*As*np.exp(-2*tau)'
+    latex: 10^9 A_\mathrm{s} e^{-2\tau}
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+    derived: true
+  rdrag:
+    latex: r_\mathrm{drag}
+    derived: true
+  kappa:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 0.00045
+    proposal: 0.00045
+    latex: \kappa
+  Dl_Poisson_90x90:
+    prior:
+      dist: norm
+      loc: 0.040469
+      scale: 0.012141
+    ref:
+      dist: norm
+      loc: 0.1
+      scale: 0.01
+    proposal: 0.01
+    latex: D_{3000}^{\rm{PS};90x90}
+  Dl_Poisson_90x150:
+    prior:
+      dist: norm
+      loc: 0.018048
+      scale: 0.005414
+    ref:
+      dist: norm
+      loc: 0.1
+      scale: 0.01
+    proposal: 0.01
+    latex: D_{3000}^{\rm{PS};90x150}
+  Dl_Poisson_90x220:
+    prior:
+      dist: norm
+      loc: 0.015719
+      scale: 0.004716
+    ref:
+      dist: norm
+      loc: 0.1
+      scale: 0.01
+    proposal: 0.01
+    latex: D_{3000}^{\rm{PS};90x220}
+  Dl_Poisson_150x150:
+    prior:
+      dist: norm
+      loc: 0.011495
+      scale: 0.003448
+    ref:
+      dist: norm
+      loc: 0.1
+      scale: 0.01
+    proposal: 0.01
+    latex: D_{3000}^{\rm{PS};150x150}
+  Dl_Poisson_150x220:
+    prior:
+      dist: norm
+      loc: 0.018962
+      scale: 0.005689
+    ref:
+      dist: norm
+      loc: 0.1
+      scale: 0.01
+    proposal: 0.01
+    latex: D_{3000}^{\rm{PS};150x220}
+  Dl_Poisson_220x220:
+    prior:
+      dist: norm
+      loc: 0.047557
+      scale: 0.014267
+    ref:
+      dist: norm
+      loc: 0.1
+      scale: 0.01
+    proposal: 0.01
+    latex: D_{3000}^{\rm{PS};220x220}
+  TDust:
+    value: 19.6
+    latex: T_{\rm{dust}}
+  ADust_TE_150:
+    prior:
+      dist: norm
+      loc: 0.184
+      scale: 0.072
+    ref:
+      dist: norm
+      loc: 0.1647
+      scale: 0.01
+    proposal: 0.01
+    latex: A_{\rm{dust}}^{TE}
+  BetaDust_TE:
+    value: 1.59
+    latex: \beta_{\rm{dust}}^{TE}
+  AlphaDust_TE:
+    prior:
+      dist: norm
+      loc: -2.42
+      scale: 0.01
+    proposal: 0.01
+    latex: \alpha_{\rm{dust}}^{TE}
+  ADust_EE_150:
+    prior:
+      dist: norm
+      loc: 0.095
+      scale: 0.012
+    ref:
+      dist: norm
+      loc: 0.0236
+      scale: 0.01
+    proposal: 0.01
+    latex: A_{\rm{dust}}^{EE}
+  BetaDust_EE:
+    value: 1.59
+    latex: \beta_{\rm{dust}}^{EE}
+  AlphaDust_EE:
+    prior:
+      dist: norm
+      loc: -2.42
+      scale: 0.01
+    proposal: 0.01
+    latex: \alpha_{\rm{dust}}^{EE}
+  mapTcal90:
+    prior:
+      min: 0.85
+      max: 1.15
+    proposal: 0.01
+    latex: T_{\rm{cal}^{90}}
+  mapTcal150:
+    prior:
+      min: 0.85
+      max: 1.15
+    proposal: 0.01
+    latex: T_{\rm{cal}^{150}}
+  mapTcal220:
+    prior:
+      min: 0.85
+      max: 1.15
+    proposal: 0.01
+    latex: T_{\rm{cal}^{220}}
+  mapPcal90:
+    prior:
+      min: 0.85
+      max: 1.15
+    proposal: 0.01
+    latex: P_{\rm{cal}^{90}}
+  mapPcal150:
+    prior:
+      min: 0.85
+      max: 1.15
+    proposal: 0.01
+    latex: P_{\rm{cal}^{150}}
+  mapPcal220:
+    prior:
+      min: 0.85
+      max: 1.15
+    proposal: 0.01
+    latex: P_{\rm{cal}^{220}}
+sampler:
+  mcmc:
+    burn_in: 0
+    max_tries: 40d
+    covmat: auto
+    covmat_params: null
+    proposal_scale: 1.9
+    output_every: 60s
+    learn_every: 40d
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: .inf
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: true
+    blocking:
+    - - 1
+      - - theta_MC_100
+        - ombh2
+        - omch2
+        - tau
+    - - 1
+      - - logA
+        - ns
+    - - 6
+      - - kappa
+        - Dl_Poisson_90x90
+        - Dl_Poisson_90x150
+        - Dl_Poisson_90x220
+        - Dl_Poisson_150x150
+        - Dl_Poisson_150x220
+        - Dl_Poisson_220x220
+        - ADust_TE_150
+        - AlphaDust_TE
+        - ADust_EE_150
+        - AlphaDust_EE
+        - mapTcal90
+        - mapTcal150
+        - mapTcal220
+        - mapPcal90
+        - mapPcal150
+        - mapPcal220
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.5.4
+output: lcdm
+version: 3.5.4

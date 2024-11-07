@@ -1,0 +1,70 @@
+[0 : output] Output to be read-from/written-into folder 'act-desi-pantheon', with prefix 'lcdm'
+[0 : camb] `camb` module loaded successfully from /users/smp24dhl/cosmo/code/CAMB/camb
+Loading ACT DR6 lensing likelihood v1.2...
+Loading ACT DR6 lensing likelihood v1.2...
+Loading ACT DR6 lensing likelihood v1.2...
+Loading ACT DR6 lensing likelihood v1.2...
+/users/smp24dhl/cosmo/code/act_dr6_lenslike/act_dr6_lenslike/act_dr6_lenslike.py:416: UserWarning: Hartlap correction to cinv: 0.949874686716792
+  warnings.warn(f"Hartlap correction to cinv: {hartlap_correction}")
+/users/smp24dhl/cosmo/code/act_dr6_lenslike/act_dr6_lenslike/act_dr6_lenslike.py:416: UserWarning: Hartlap correction to cinv: 0.949874686716792
+  warnings.warn(f"Hartlap correction to cinv: {hartlap_correction}")
+/users/smp24dhl/cosmo/code/act_dr6_lenslike/act_dr6_lenslike/act_dr6_lenslike.py:416: UserWarning: Hartlap correction to cinv: 0.949874686716792
+  warnings.warn(f"Hartlap correction to cinv: {hartlap_correction}")
+/users/smp24dhl/cosmo/code/act_dr6_lenslike/act_dr6_lenslike/act_dr6_lenslike.py:416: UserWarning: Hartlap correction to cinv: 0.949874686716792
+  warnings.warn(f"Hartlap correction to cinv: {hartlap_correction}")
+[0 : bao.desi_2024_bao_all] Initialized.
+[3 : bao.desi_2024_bao_all] Initialized.
+[1 : bao.desi_2024_bao_all] Initialized.
+[2 : bao.desi_2024_bao_all] Initialized.
+[0 : mcmc] Getting initial point... (this may take a few seconds)
+[3 : mcmc] Getting initial point... (this may take a few seconds)
+[1 : mcmc] Getting initial point... (this may take a few seconds)
+[2 : mcmc] Getting initial point... (this may take a few seconds)
+[1 : mcmc] Initial point: logA:3.050875, ns:0.967374, theta_MC_100:1.040906, ombh2:0.02232501, omch2:0.1179215, tau:0.06652
+[2 : mcmc] Initial point: logA:3.050768, ns:0.9677329, theta_MC_100:1.040616, ombh2:0.02236265, omch2:0.1200516, tau:0.06327596
+[0 : mcmc] Initial point: logA:3.049997, ns:0.9664382, theta_MC_100:1.0418, ombh2:0.02244638, omch2:0.119643, tau:0.06574361
+[3 : mcmc] Initial point: logA:3.048476, ns:0.9685122, theta_MC_100:1.041752, ombh2:0.02246612, omch2:0.121526, tau:0.06347647
+[0 : model] Measuring speeds... (this may take a few seconds)
+[0 : model] Setting measured speeds (per sec): {act_dr6_lenslike.ACTDR6LensLike: 15.8, bao.desi_2024_bao_all: 722.0, sn.pantheonplus: 804.0, camb.transfers: 0.715, camb: 0.787}
+[0 : model] *WARNING* Oversampling would be trivial due to small speed difference or small `oversample_power`. Set to 2.
+[0 : mcmc] *WARNING* Dragging disabled: speed ratios < 2.
+[0 : autoselect_covmat] No cached covmat database present, not usable or not up-to-date. Will be re-created and cached.
+[0 : mcmc] Covariance matrix selected automatically: /users/smp24dhl/cosmo/data/planck_supp_data_and_covmats/covmats/base_WMAP_post_BAO.covmat
+[0 : mcmc] Covariance matrix loaded for params ['ombh2', 'omch2', 'theta_MC_100', 'tau', 'logA', 'ns']
+[0 : mcmc] All parameters' covariance loaded from given covmat.
+[0 : mcmc] Sampling!
+[0 : mcmc] Progress @ 2024-11-07 18:18:46 : 1 steps taken, and 0 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:18:46 : 1 steps taken, and 0 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:18:46 : 1 steps taken, and 0 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:18:46 : 1 steps taken, and 0 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:19:47 : 27 steps taken, and 8 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:19:48 : 27 steps taken, and 6 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:19:48 : 27 steps taken, and 4 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:19:49 : 27 steps taken, and 7 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:20:48 : 54 steps taken, and 13 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:20:49 : 52 steps taken, and 9 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:20:50 : 54 steps taken, and 16 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:20:50 : 52 steps taken, and 8 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:21:50 : 81 steps taken, and 23 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:21:51 : 78 steps taken, and 14 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:21:51 : 79 steps taken, and 16 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:21:51 : 80 steps taken, and 22 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:22:50 : 107 steps taken, and 25 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:22:51 : 103 steps taken, and 20 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:22:53 : 104 steps taken, and 18 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:22:53 : 107 steps taken, and 33 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:23:50 : 134 steps taken, and 31 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:23:53 : 129 steps taken, and 28 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:23:54 : 129 steps taken, and 26 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:23:55 : 133 steps taken, and 37 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:24:51 : 160 steps taken, and 37 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:24:53 : 155 steps taken, and 35 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:24:55 : 156 steps taken, and 33 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:24:55 : 159 steps taken, and 42 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:25:53 : 187 steps taken, and 42 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:25:54 : 180 steps taken, and 38 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:25:55 : 182 steps taken, and 39 accepted.
+[2 : mcmc] Progress @ 2024-11-07 18:25:57 : 187 steps taken, and 47 accepted.
+[1 : mcmc] Progress @ 2024-11-07 18:26:54 : 205 steps taken, and 44 accepted.
+[0 : mcmc] Progress @ 2024-11-07 18:26:55 : 214 steps taken, and 47 accepted.
+[3 : mcmc] Progress @ 2024-11-07 18:26:56 : 208 steps taken, and 44 accepted.
