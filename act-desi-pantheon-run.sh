@@ -17,4 +17,4 @@ source /users/smp24dhl/cosmo/code/planck/clik/bin/clik_profile.sh
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-mpirun -np 4 cobaya-run act-desi-pantheon.yaml
+mpirun -np 4 cobaya-run w0wa.yaml
