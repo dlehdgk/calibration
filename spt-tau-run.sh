@@ -17,8 +17,5 @@ source /users/smp24dhl/cosmo/code/planck/clik/bin/clik_profile.sh
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-# running spt3g+tau prior
-#mpirun -np 4 cobaya-run spt-tau.yaml
+mpirun -np 4 cobaya-run spt-tau.yaml
 
-# running ACTDR4+ACTDR6 lensing+tau prior
-mpirun -np 4 cobaya-run act-tau.yaml

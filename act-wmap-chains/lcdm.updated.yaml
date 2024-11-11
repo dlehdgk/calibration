@@ -1,0 +1,303 @@
+theory:
+  camb:
+    version: 1.5.8
+    path: null
+    speed: 0.3
+    stop_at_error: false
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      nnu: 3.044
+      theta_H0_range:
+      - 20
+      - 100
+    ignore_obsolete: false
+    use_renames: false
+    external_primordial_pk: false
+    renames:
+      omegabh2: ombh2
+      omegach2: omch2
+      omegal: omega_de
+      omegak: omk
+      yhe: YHe
+      yheused: YHe
+      YpBBN: Y_p
+    input_params:
+    - As
+    - ns
+    - cosmomc_theta
+    - ombh2
+    - omch2
+    - mnu
+    - tau
+    output_params:
+    - H0
+    - omegam
+    - omega_de
+    - YHe
+    - Y_p
+    - zrei
+    - sigma8
+    - age
+    - rdrag
+    - DH
+likelihood:
+  pyactlike.ACTPol_lite_DR4:
+    name: ACTPol_lite_DR4
+    components:
+    - tt
+    - te
+    - ee
+    lmax: 7000
+    bmin: 0
+    nbintt: 40
+    nbinte: 45
+    nbinee: 45
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - yp2
+    output_params: []
+  wmaplike.WMAPLike:
+    data_folder: WMAP/dr5/wmap_likelihood_v5/data/
+    path: null
+    gibbs_sigma_filename: lowlT/gibbs/sigmaEllsHkeChu_test16_ilc_9yr_5deg_r5_2uK_corrected_kq85y9_June_r5_all.fits
+    gibbs_cl_filename: lowlT/gibbs/test_cls.dat
+    tt_filename: highl/wmap_likelihood_inputs_tt.p4v6.wmap9.kq85.cinv_v3.dat
+    te_filename: highl/wmap_likelihood_inputs_te.p5_final.dat
+    tb_filename: highl/wmap_likelihood_inputs_tb.p5_final.dat
+    ttoff_filename: highl/wmap_likelihood_inputs_tt_offdiag.p4v4.wmap9.kq85.cinv_v3.dat
+    teoff_filename: highl/wmap_likelihood_inputs_te_offdiag.p5_final.dat
+    sz_filename: sz_spectra/wmap_sz_spectrum_61GHz_v5.txt
+    ifn_ptsrc_mode: highl/wmap_likelihood_inputs_ptsrc.p5_final.dat
+    ifn_beam_modes: highl/top_ten_modes.beam_covariance_VW_combined.dat
+    ifn_fiducial_cltt: test_cls_v4.dat
+    ttmin: 2
+    ttmax: 1200
+    temin: 24
+    temax: 800
+    lowl_max: 32
+    use_lowl_TT: true
+    use_lowl_pol: false
+    use_lowl_TBEB: false
+    use_highl_TT: true
+    use_highl_TE: true
+    use_highl_TB: false
+    use_highl_TT_beam_ptsrc: false
+    use_gibbs: true
+    use_sz: true
+    gibbs_first_iteration: 10
+    gibbs_last_iteration: 120000
+    gibbs_skip: 2
+    gibbs_ell_max: 32
+    beam_diagonal_sigma: true
+    beam_gaussian_likelihood: true
+    beam_fixed_fiducial_spectrum: false
+    beam_include_beam_modes: true
+    beam_include_ptsrc_mode: true
+    n_beam_modes: 9
+    ptsrc_err: 0.1
+    TEEEBB_filename_0: masked_ee_ninvplninv_qu_r3_corrected_9yr.KaQV.fits
+    TEEEBB_filename_1: masked_bb_ninvplninv_qu_r3_corrected_9yr.KaQV.fits
+    TEEEBB_filename_2: masked_ninv_qu_r3_corrected_9yr.KaQV.fits
+    TEEEBB_filename_3: wt_r3_9yr.KaQV.map_q
+    TEEEBB_filename_4: wt_r3_9yr.KaQV.map_u
+    TEEEBB_filename_5: lowlP/alm_tt_fs_r9_ilc_nopixwin_9yr.dat
+    TEEEBB_filename_6: masked_ninvy_e_qu_r3_corrected_9yr.KaQV.fits
+    TEEEBB_filename_9: healpix_data/pixel_window_n0008.txt
+    TEEEBB_maskfile: lowlP/mask_r3_p06_jarosik.fits
+    type: []
+    speed: -1
+    stop_at_error: true
+    version: null
+    input_params:
+    - A_sz
+    output_params: []
+params:
+  yp2:
+    prior:
+      min: 0.5
+      max: 1.5
+  logA:
+    prior:
+      min: 1.61
+      max: 3.91
+    ref:
+      dist: norm
+      loc: 3.05
+      scale: 0.001
+    proposal: 0.001
+    latex: \log(10^{10} A_\mathrm{s})
+    drop: true
+  As:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_\mathrm{s}
+    derived: true
+  ns:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 0.965
+      scale: 0.004
+    proposal: 0.002
+    latex: n_\mathrm{s}
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04109
+      scale: 0.0004
+    proposal: 0.0002
+    latex: 100\theta_\mathrm{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+    derived: false
+  H0:
+    latex: H_0
+    min: 20
+    max: 100
+    derived: true
+  ombh2:
+    prior:
+      min: 0.005
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.0224
+      scale: 0.0001
+    proposal: 0.0001
+    latex: \Omega_\mathrm{b} h^2
+    renames:
+    - omegabh2
+  omch2:
+    prior:
+      min: 0.001
+      max: 0.99
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.001
+    proposal: 0.0005
+    latex: \Omega_\mathrm{c} h^2
+    renames:
+    - omegach2
+  omegam:
+    latex: \Omega_\mathrm{m}
+    derived: true
+  omegamh2:
+    derived: 'lambda omegam, H0: omegam*(H0/100)**2'
+    latex: \Omega_\mathrm{m} h^2
+  mnu:
+    value: 0.06
+  omega_de:
+    latex: \Omega_\Lambda
+    derived: true
+    renames:
+    - omegal
+  YHe:
+    latex: Y_\mathrm{P}
+    derived: true
+    renames:
+    - yhe
+    - yheused
+  Y_p:
+    latex: Y_P^\mathrm{BBN}
+    derived: true
+    renames:
+    - YpBBN
+  DHBBN:
+    derived: 'lambda DH: 10**5*DH'
+    latex: 10^5 \mathrm{D}/\mathrm{H}
+  tau:
+    prior:
+      dist: norm
+      loc: 0.065
+      scale: 0.0015
+    ref:
+      dist: norm
+      loc: 0.065
+      scale: 0.0015
+    proposal: 0.001
+    latex: \tau_\mathrm{reio}
+  zrei:
+    latex: z_\mathrm{re}
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  s8h5:
+    derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
+    latex: \sigma_8/h^{0.5}
+  s8omegamp5:
+    derived: 'lambda sigma8, omegam: sigma8*omegam**0.5'
+    latex: \sigma_8 \Omega_\mathrm{m}^{0.5}
+  s8omegamp25:
+    derived: 'lambda sigma8, omegam: sigma8*omegam**0.25'
+    latex: \sigma_8 \Omega_\mathrm{m}^{0.25}
+  A:
+    derived: 'lambda As: 1e9*As'
+    latex: 10^9 A_\mathrm{s}
+  clamp:
+    derived: 'lambda As, tau: 1e9*As*np.exp(-2*tau)'
+    latex: 10^9 A_\mathrm{s} e^{-2\tau}
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+    derived: true
+  rdrag:
+    latex: r_\mathrm{drag}
+    derived: true
+  A_sz:
+    value: 0.0
+    latex: A_\mathrm{SZ}
+sampler:
+  mcmc:
+    burn_in: 0
+    max_tries: 40d
+    covmat: auto
+    covmat_params: null
+    proposal_scale: 1.9
+    output_every: 60s
+    learn_every: 40d
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: .inf
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: true
+    blocking:
+    - - 1
+      - - theta_MC_100
+        - ombh2
+        - omch2
+        - tau
+    - - 1
+      - - logA
+        - ns
+    - - 15
+      - - yp2
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.5.4
+output: lcdm
+version: 3.5.4

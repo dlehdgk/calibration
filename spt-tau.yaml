@@ -8,7 +8,7 @@ theory:
       - 20
       - 100
 likelihood:
-  spt3g_2020.TEEE: null
+  spt3g_2022.TTTEEE: null
 params:
   logA:
     prior:
@@ -130,4 +130,5 @@ sampler:
     covmat: auto
     Rminus1_stop: 0.01 # usually have this to 0.1 for a typical run. 0.01 is publication quality
     Rminus1_cl_stop: 0.2
-output: spt-tau-chains/lcdm
+output: spt-tau-chains/lcdm_comp
+force: true

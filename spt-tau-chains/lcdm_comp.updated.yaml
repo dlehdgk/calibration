@@ -1,0 +1,651 @@
+theory:
+  camb:
+    version: 1.5.8
+    path: null
+    speed: 0.3
+    stop_at_error: false
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      nnu: 3.044
+      theta_H0_range:
+      - 20
+      - 100
+    ignore_obsolete: false
+    use_renames: false
+    external_primordial_pk: false
+    renames:
+      omegabh2: ombh2
+      omegach2: omch2
+      omegal: omega_de
+      omegak: omk
+      yhe: YHe
+      yheused: YHe
+      YpBBN: Y_p
+    input_params:
+    - As
+    - ns
+    - cosmomc_theta
+    - ombh2
+    - omch2
+    - mnu
+    - tau
+    output_params:
+    - H0
+    - omegam
+    - omega_de
+    - YHe
+    - Y_p
+    - zrei
+    - sigma8
+    - age
+    - rdrag
+    - DH
+likelihood:
+  spt3g_2022.TTTEEE:
+    path: null
+    bandpower_filename: SPT3G_2018_TTTEEE_bandpowers.dat
+    covariance_filename: SPT3G_2018_TTTEEE_covariance.dat
+    fiducial_covariance_filename: SPT3G_2018_TTTEEE_fiducial_covariance.dat
+    beam_covariance_filename: SPT3G_2018_TTTEEE_beam_covariance.dat
+    cal_covariance_filename: SPT3G_2018_TTTEEE_cal_covariance.dat
+    nu_eff_filename: SPT3G_2018_TTTEEE_effective_band_centres.dat
+    window_folder: windows
+    spectra_to_fit:
+    - 90_Tx90_T
+    - 90_Tx90_E
+    - 90_Ex90_E
+    - 90_Tx150_T
+    - 90_Tx150_E
+    - 90_Ex150_E
+    - 90_Tx220_T
+    - 90_Tx220_E
+    - 90_Ex220_E
+    - 150_Tx150_T
+    - 150_Tx150_E
+    - 150_Ex150_E
+    - 150_Tx220_T
+    - 150_Tx220_E
+    - 150_Ex220_E
+    - 220_Tx220_T
+    - 220_Tx220_E
+    - 220_Ex220_E
+    foregrounds:
+      tSZ_template_filename: foreground_templates/tSZ_Dl_shaw10_153ghz_norm1.txt
+      kSZ_template_filename: foreground_templates/kSZ_Dl_CSF_incl_patchy_norm1.txt
+      galdust_T: 19.6
+      galdust_nu0: 150.0
+      CIB_T: 25.0
+      CIB_nu0: 150.0
+      tSZ_nu0: 143.0
+    bin_min: 1
+    bin_max: 44
+    windows_lmin: 1
+    windows_lmax: 3200
+    spec_bin_min:
+    - 10
+    - 1
+    - 1
+    - 10
+    - 1
+    - 1
+    - 10
+    - 1
+    - 1
+    - 10
+    - 1
+    - 1
+    - 15
+    - 1
+    - 1
+    - 15
+    - 1
+    - 1
+    spec_bin_max:
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    - 44
+    data_folder: spt3g_2018/TTTEEE/SPT3G_2018_TTTEEE_public_likelihood/data/SPT3G_2018_TTTEEE
+    cov_eval_cut_threshold: 0.2
+    cov_eval_large_number_replacement: 1000.0
+    beam_cov_scale: 1.0
+    aberration_coefficient: -0.0004826
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - kappa
+    - Tcal90
+    - Tcal150
+    - Tcal220
+    - Ecal90
+    - Ecal150
+    - Ecal220
+    - TT_Poisson_90x90
+    - TT_Poisson_90x150
+    - TT_Poisson_90x220
+    - TT_Poisson_150x150
+    - TT_Poisson_150x220
+    - TT_Poisson_220x220
+    - TT_GalCirrus_Amp
+    - TT_GalCirrus_Alpha
+    - TT_GalCirrus_Beta
+    - TT_CIBClustering_Amp
+    - TT_CIBClustering_Alpha
+    - TT_CIBClustering_Beta
+    - TT_CIBClustering_decorr_90
+    - TT_CIBClustering_decorr_150
+    - TT_CIBClustering_decorr_220
+    - TT_tSZ_Amp
+    - TT_tSZ_CIB_corr
+    - TT_kSZ_Amp
+    - TE_PolGalDust_Amp
+    - TE_PolGalDust_Alpha
+    - TE_PolGalDust_Beta
+    - EE_Poisson_90x90
+    - EE_Poisson_90x150
+    - EE_Poisson_90x220
+    - EE_Poisson_150x150
+    - EE_Poisson_150x220
+    - EE_Poisson_220x220
+    - EE_PolGalDust_Amp
+    - EE_PolGalDust_Alpha
+    - EE_PolGalDust_Beta
+    output_params: []
+params:
+  logA:
+    prior:
+      min: 1.61
+      max: 3.91
+    ref:
+      dist: norm
+      loc: 3.05
+      scale: 0.001
+    proposal: 0.001
+    latex: \log(10^{10} A_\mathrm{s})
+    drop: true
+  As:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_\mathrm{s}
+    derived: true
+  ns:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 0.965
+      scale: 0.004
+    proposal: 0.002
+    latex: n_\mathrm{s}
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04109
+      scale: 0.0004
+    proposal: 0.0002
+    latex: 100\theta_\mathrm{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+    derived: false
+  H0:
+    latex: H_0
+    min: 20
+    max: 100
+    derived: true
+  ombh2:
+    prior:
+      min: 0.005
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.0224
+      scale: 0.0001
+    proposal: 0.0001
+    latex: \Omega_\mathrm{b} h^2
+    renames:
+    - omegabh2
+  omch2:
+    prior:
+      min: 0.001
+      max: 0.99
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.001
+    proposal: 0.0005
+    latex: \Omega_\mathrm{c} h^2
+    renames:
+    - omegach2
+  omegam:
+    latex: \Omega_\mathrm{m}
+    derived: true
+  omegamh2:
+    derived: 'lambda omegam, H0: omegam*(H0/100)**2'
+    latex: \Omega_\mathrm{m} h^2
+  mnu:
+    value: 0.06
+  omega_de:
+    latex: \Omega_\Lambda
+    derived: true
+    renames:
+    - omegal
+  YHe:
+    latex: Y_\mathrm{P}
+    derived: true
+    renames:
+    - yheused
+    - yhe
+  Y_p:
+    latex: Y_P^\mathrm{BBN}
+    derived: true
+    renames:
+    - YpBBN
+  DHBBN:
+    derived: 'lambda DH: 10**5*DH'
+    latex: 10^5 \mathrm{D}/\mathrm{H}
+  tau:
+    prior:
+      dist: norm
+      loc: 0.054
+      scale: 0.0074
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.0074
+    proposal: 0.001
+    latex: \tau_\mathrm{reio}
+  zrei:
+    latex: z_\mathrm{re}
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  s8h5:
+    derived: 'lambda sigma8, H0: sigma8*(H0*1e-2)**(-0.5)'
+    latex: \sigma_8/h^{0.5}
+  s8omegamp5:
+    derived: 'lambda sigma8, omegam: sigma8*omegam**0.5'
+    latex: \sigma_8 \Omega_\mathrm{m}^{0.5}
+  s8omegamp25:
+    derived: 'lambda sigma8, omegam: sigma8*omegam**0.25'
+    latex: \sigma_8 \Omega_\mathrm{m}^{0.25}
+  A:
+    derived: 'lambda As: 1e9*As'
+    latex: 10^9 A_\mathrm{s}
+  clamp:
+    derived: 'lambda As, tau: 1e9*As*np.exp(-2*tau)'
+    latex: 10^9 A_\mathrm{s} e^{-2\tau}
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+    derived: true
+  rdrag:
+    latex: r_\mathrm{drag}
+    derived: true
+  kappa:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 0.00045
+    ref: 0.0
+    proposal: 0.00045
+    latex: \kappa
+  Tcal90:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref: 1.0
+    proposal: 0.01
+    latex: T_{\rm{cal}}^{95 \rm{GHz}}
+  Tcal150:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref: 1.0
+    proposal: 0.01
+    latex: T_{\rm{cal}}^{150 \rm{GHz}}
+  Tcal220:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref: 1.0
+    proposal: 0.01
+    latex: T_{\rm{cal}}^{220 \rm{GHz}}
+  Ecal90:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref: 1.0
+    proposal: 0.01
+    latex: E_{\rm{cal}}^{95 \rm{GHz}}
+  Ecal150:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref: 1.0
+    proposal: 0.01
+    latex: E_{\rm{cal}}^{150 \rm{GHz}}
+  Ecal220:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref: 1.0
+    proposal: 0.01
+    latex: E_{\rm{cal}}^{220 \rm{GHz}}
+  TT_Poisson_90x90:
+    prior:
+      dist: norm
+      loc: 51.3204
+      scale: 9.442
+    ref: 52.8146
+    proposal: 5.0
+    latex: D_{3000,95x95}^{\rm{Poisson,TT}}
+  TT_Poisson_90x150:
+    prior:
+      dist: norm
+      loc: 22.4417
+      scale: 7.0881
+    ref: 23.9268
+    proposal: 5.0
+    latex: D_{3000,95x150}^{\rm{Poisson,TT}}
+  TT_Poisson_90x220:
+    prior:
+      dist: norm
+      loc: 20.7004
+      scale: 5.9235
+    ref: 21.5341
+    proposal: 5.0
+    latex: D_{3000,95x220}^{\rm{Poisson,TT}}
+  TT_Poisson_150x150:
+    prior:
+      dist: norm
+      loc: 15.3455
+      scale: 4.132
+    ref: 15.8306
+    proposal: 5.0
+    latex: D_{3000,150x150}^{\rm{Poisson,TT}}
+  TT_Poisson_150x220:
+    prior:
+      dist: norm
+      loc: 28.3573
+      scale: 4.1925
+    ref: 26.9362
+    proposal: 5.0
+    latex: D_{3000,150x220}^{\rm{Poisson,TT}}
+  TT_Poisson_220x220:
+    prior:
+      dist: norm
+      loc: 75.9719
+      scale: 14.8624
+    ref: 68.2457
+    proposal: 5.0
+    latex: D_{3000,220x220}^{\rm{Poisson,TT}}
+  TT_GalCirrus_Amp:
+    prior:
+      dist: norm
+      loc: 1.88
+      scale: 0.48
+    ref: 1.88
+    proposal: 0.2
+    latex: A^{\rm{cirrus}}_{80}
+  TT_GalCirrus_Alpha:
+    prior:
+      dist: norm
+      loc: -2.53
+      scale: 0.05
+    ref: -2.53
+    proposal: 0.05
+    latex: \alpha^{\rm{cirrus}}
+  TT_GalCirrus_Beta:
+    prior:
+      dist: norm
+      loc: 1.48
+      scale: 0.02
+    ref: 1.48
+    proposal: 0.1
+    latex: \beta^{\rm{cirrus}}
+  TT_CIBClustering_Amp:
+    prior:
+      dist: norm
+      loc: 3.2263
+      scale: 1.8354
+    ref: 3.2263
+    proposal: 5.0
+    latex: A^{\rm{CIB-cl}}_{80}
+  TT_CIBClustering_Alpha:
+    value: 0.8
+    latex: \alpha^{\rm{CIB-cl}}
+  TT_CIBClustering_Beta:
+    prior:
+      dist: norm
+      loc: 2.2642
+      scale: 0.3814
+    ref: 2.2952
+    proposal: 0.5
+    latex: \beta^{\rm{CIB-cl}}
+  TT_CIBClustering_decorr_90:
+    value: 1.0
+    latex: \xi^{\rm{CIB-decorr},90}
+  TT_CIBClustering_decorr_150:
+    value: 1.0
+    latex: \xi^{\rm{CIB-decorr},150}
+  TT_CIBClustering_decorr_220:
+    value: 1.0
+    latex: \xi^{\rm{CIB-decorr},220}
+  TT_tSZ_Amp:
+    prior:
+      dist: norm
+      loc: 3.2279
+      scale: 2.3764
+    ref: 3.42
+    proposal: 0.5
+    latex: A^{\rm{tSZ}}
+  TT_tSZ_CIB_corr:
+    prior:
+      dist: norm
+      loc: 0.1801
+      scale: 0.3342
+    ref: 0.1144
+    proposal: 0.1
+    latex: \xi
+  TT_kSZ_Amp:
+    prior:
+      dist: norm
+      loc: 3.7287
+      scale: 4.644
+    ref: 3.0
+    proposal: 1.0
+    latex: A^{\rm{kSZ}}
+  TE_PolGalDust_Amp:
+    prior:
+      dist: norm
+      loc: 0.12
+      scale: 0.051
+    ref: 0.12
+    proposal: 0.051
+    latex: A_{80}^{\rm{TE}}
+  TE_PolGalDust_Alpha:
+    prior:
+      dist: norm
+      loc: -2.42
+      scale: 0.04
+    ref: -2.42
+    proposal: 0.04
+    latex: \alpha_{\rm{TE}}
+  TE_PolGalDust_Beta:
+    prior:
+      dist: norm
+      loc: 1.51
+      scale: 0.04
+    ref: 1.51
+    proposal: 0.04
+    latex: \beta_{\rm{TE}}
+  EE_Poisson_90x90:
+    prior:
+      dist: norm
+      loc: 0.040469
+      scale: 0.012141
+    ref: 0.040469
+    proposal: 0.01
+    latex: D_{3000,95x95}^{\rm{Poisson,EE}}
+  EE_Poisson_90x150:
+    prior:
+      dist: norm
+      loc: 0.018048
+      scale: 0.005414
+    ref: 0.018048
+    proposal: 0.01
+    latex: D_{3000,95x150}^{\rm{Poisson,EE}}
+  EE_Poisson_90x220:
+    prior:
+      dist: norm
+      loc: 0.015719
+      scale: 0.004716
+    ref: 0.015719
+    proposal: 0.01
+    latex: D_{3000,95x220}^{\rm{Poisson,EE}}
+  EE_Poisson_150x150:
+    prior:
+      dist: norm
+      loc: 0.011495
+      scale: 0.003448
+    ref: 0.011495
+    proposal: 0.01
+    latex: D_{3000,150x150}^{\rm{Poisson,EE}}
+  EE_Poisson_150x220:
+    prior:
+      dist: norm
+      loc: 0.018962
+      scale: 0.005689
+    ref: 0.018962
+    proposal: 0.01
+    latex: D_{3000,150x220}^{\rm{Poisson,EE}}
+  EE_Poisson_220x220:
+    prior:
+      dist: norm
+      loc: 0.047557
+      scale: 0.014267
+    ref: 0.047557
+    proposal: 0.01
+    latex: D_{3000,220x220}^{\rm{Poisson,EE}}
+  EE_PolGalDust_Amp:
+    prior:
+      dist: norm
+      loc: 0.05
+      scale: 0.022
+    ref: 0.05
+    proposal: 0.02
+    latex: A_{80}^{\rm{EE}}
+  EE_PolGalDust_Alpha:
+    prior:
+      dist: norm
+      loc: -2.42
+      scale: 0.04
+    ref: -2.42
+    proposal: 0.04
+    latex: \alpha_{\rm{EE}}
+  EE_PolGalDust_Beta:
+    prior:
+      dist: norm
+      loc: 1.51
+      scale: 0.04
+    ref: 1.51
+    proposal: 0.04
+    latex: \beta_{\rm{EE}}
+sampler:
+  mcmc:
+    burn_in: 0
+    max_tries: 40d
+    covmat: auto
+    covmat_params: null
+    proposal_scale: 1.9
+    output_every: 60s
+    learn_every: 40d
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: .inf
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: true
+    blocking:
+    - - 1
+      - - theta_MC_100
+        - ombh2
+        - omch2
+        - tau
+    - - 1
+      - - logA
+        - ns
+    - - 6
+      - - kappa
+        - Tcal90
+        - Tcal150
+        - Tcal220
+        - Ecal90
+        - Ecal150
+        - Ecal220
+        - TT_Poisson_90x90
+        - TT_Poisson_90x150
+        - TT_Poisson_90x220
+        - TT_Poisson_150x150
+        - TT_Poisson_150x220
+        - TT_Poisson_220x220
+        - TT_GalCirrus_Amp
+        - TT_GalCirrus_Alpha
+        - TT_GalCirrus_Beta
+        - TT_CIBClustering_Amp
+        - TT_CIBClustering_Beta
+        - TT_tSZ_Amp
+        - TT_tSZ_CIB_corr
+        - TT_kSZ_Amp
+        - TE_PolGalDust_Amp
+        - TE_PolGalDust_Alpha
+        - TE_PolGalDust_Beta
+        - EE_Poisson_90x90
+        - EE_Poisson_90x150
+        - EE_Poisson_90x220
+        - EE_Poisson_150x150
+        - EE_Poisson_150x220
+        - EE_Poisson_220x220
+        - EE_PolGalDust_Amp
+        - EE_PolGalDust_Alpha
+        - EE_PolGalDust_Beta
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.5.4
+output: lcdm_comp
+version: 3.5.4
