@@ -15,9 +15,9 @@ theory:
       - 20
       - 100
 likelihood:
-  planck_2018_highl_plik.TTTEEE: null #i) in paper
-  planck_2018_lowl.TT: null #ii) in paper
-  planck_2018_lowl.EE: null #iii) in paper
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
   act_dr6_lenslike.ACTDR6LensLike:
     lens_only: false
     stop_at_error: True
@@ -103,8 +103,8 @@ params:
       dist: norm
       loc: -0.99
       scale: 0.02
-      proposal: 0.02
-      latex: w_{0,\mathrm{DE}}
+    proposal: 0.02
+    latex: w_{0,\mathrm{DE}}
   wa:
     prior:
       min: -3
@@ -113,8 +113,8 @@ params:
       dist: norm
       loc: 0.0
       scale: 0.05
-      proposal: 0.05
-      latex: w_{a,\mathrm{DE}}
+    proposal: 0.05
+    latex: w_{a,\mathrm{DE}}
   YHe:
     latex: Y_\mathrm{P}
   Y_p:
@@ -164,3 +164,4 @@ sampler:
     Rminus1_stop: 0.01 # usually have this to 0.1 for a typical run. 0.01 is publication quality
     Rminus1_cl_stop: 0.2
 output: act-desi-pantheon-chains/w0wa
+force: true

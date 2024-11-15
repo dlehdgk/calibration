@@ -1,0 +1,180 @@
+[0 : output] Output to be read-from/written-into folder 'act-desi-pantheon-chains', with prefix 'w0wa'
+[1 : prior] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[2 : prior] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[3 : prior] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[0 : prior] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[1 : exception handler] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[3 : exception handler] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[2 : exception handler] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[0 : exception handler] *ERROR* Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+[1 : exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 591, in get_scipy_1d_pdf
+    return pdf_dist(**kwargs)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 851, in __call__
+    return self.freeze(*args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 846, in freeze
+    return rv_continuous_frozen(self, *args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 467, in __init__
+    shapes, _, _ = self.dist._parse_args(*args, **kwds)
+TypeError: _parse_args() got an unexpected keyword argument 'proposal'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 706, in set_reference
+    self.ref_pdf[i] = get_scipy_1d_pdf(ref)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 593, in get_scipy_1d_pdf
+    raise ValueError(
+ValueError: Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/bin/cobaya-run", line 8, in <module>
+    sys.exit(run_script())
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 198, in run_script
+    run(info, **arguments.__dict__)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 123, in run
+    with Model(updated_info["params"], updated_info["likelihood"],
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/model.py", line 241, in __init__
+    self.prior = Prior(self.parameterization, self._updated_info.get("prior"))
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 471, in __init__
+    self.set_reference({p: v.get("ref") for p, v in sampled_params_info.items()})
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 708, in set_reference
+    raise LoggedError(
+cobaya.log.LoggedError: Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+-------------------------------------------------------------
+
+[2 : exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 591, in get_scipy_1d_pdf
+    return pdf_dist(**kwargs)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 851, in __call__
+    return self.freeze(*args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 846, in freeze
+    return rv_continuous_frozen(self, *args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 467, in __init__
+    shapes, _, _ = self.dist._parse_args(*args, **kwds)
+TypeError: _parse_args() got an unexpected keyword argument 'proposal'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 706, in set_reference
+    self.ref_pdf[i] = get_scipy_1d_pdf(ref)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 593, in get_scipy_1d_pdf
+    raise ValueError(
+ValueError: Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/bin/cobaya-run", line 8, in <module>
+    sys.exit(run_script())
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 198, in run_script
+    run(info, **arguments.__dict__)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 123, in run
+    with Model(updated_info["params"], updated_info["likelihood"],
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/model.py", line 241, in __init__
+    self.prior = Prior(self.parameterization, self._updated_info.get("prior"))
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 471, in __init__
+    self.set_reference({p: v.get("ref") for p, v in sampled_params_info.items()})
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 708, in set_reference
+    raise LoggedError(
+cobaya.log.LoggedError: Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+-------------------------------------------------------------
+
+[3 : exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 591, in get_scipy_1d_pdf
+    return pdf_dist(**kwargs)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 851, in __call__
+    return self.freeze(*args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 846, in freeze
+    return rv_continuous_frozen(self, *args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 467, in __init__
+    shapes, _, _ = self.dist._parse_args(*args, **kwds)
+TypeError: _parse_args() got an unexpected keyword argument 'proposal'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 706, in set_reference
+    self.ref_pdf[i] = get_scipy_1d_pdf(ref)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 593, in get_scipy_1d_pdf
+    raise ValueError(
+ValueError: Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/bin/cobaya-run", line 8, in <module>
+    sys.exit(run_script())
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 198, in run_script
+    run(info, **arguments.__dict__)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 123, in run
+    with Model(updated_info["params"], updated_info["likelihood"],
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/model.py", line 241, in __init__
+    self.prior = Prior(self.parameterization, self._updated_info.get("prior"))
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 471, in __init__
+    self.set_reference({p: v.get("ref") for p, v in sampled_params_info.items()})
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 708, in set_reference
+    raise LoggedError(
+cobaya.log.LoggedError: Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+-------------------------------------------------------------
+
+[0 : exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 591, in get_scipy_1d_pdf
+    return pdf_dist(**kwargs)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 851, in __call__
+    return self.freeze(*args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 846, in freeze
+    return rv_continuous_frozen(self, *args, **kwds)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py", line 467, in __init__
+    shapes, _, _ = self.dist._parse_args(*args, **kwds)
+TypeError: _parse_args() got an unexpected keyword argument 'proposal'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 706, in set_reference
+    self.ref_pdf[i] = get_scipy_1d_pdf(ref)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/tools.py", line 593, in get_scipy_1d_pdf
+    raise ValueError(
+ValueError: Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/smp24dhl/.conda/envs/cosmos/bin/cobaya-run", line 8, in <module>
+    sys.exit(run_script())
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 198, in run_script
+    run(info, **arguments.__dict__)
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/run.py", line 123, in run
+    with Model(updated_info["params"], updated_info["likelihood"],
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/model.py", line 241, in __init__
+    self.prior = Prior(self.parameterization, self._updated_info.get("prior"))
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 471, in __init__
+    self.set_reference({p: v.get("ref") for p, v in sampled_params_info.items()})
+  File "/users/smp24dhl/.conda/envs/cosmos/lib/python3.9/site-packages/cobaya/prior.py", line 708, in set_reference
+    raise LoggedError(
+cobaya.log.LoggedError: Error when creating reference pdf for parameter 'w': Error when initializing scipy.stats.norm: <<_parse_args() got an unexpected keyword argument 'proposal'>>. This probably means that the distribution {dist} does not recognize the parameter mentioned in the 'scipy' error above.
+-------------------------------------------------------------
+
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[29812,1],2]
+  Exit code:    1
+--------------------------------------------------------------------------
