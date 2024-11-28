@@ -295,8 +295,8 @@ params:
     latex: Y_\mathrm{P}
     derived: true
     renames:
-    - yheused
     - yhe
+    - yheused
   Y_p:
     latex: Y_P^\mathrm{BBN}
     derived: true

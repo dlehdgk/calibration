@@ -164,4 +164,4 @@ sampler:
     Rminus1_stop: 0.01 # usually have this to 0.1 for a typical run. 0.01 is publication quality
     Rminus1_cl_stop: 0.2
 output: act-desi-pantheon-chains/w0wa
-force: true
+resume: true
