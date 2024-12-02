@@ -182,8 +182,8 @@ params:
     latex: Y_\mathrm{P}
     derived: true
     renames:
-    - yhe
     - yheused
+    - yhe
   Y_p:
     latex: Y_P^\mathrm{BBN}
     derived: true
@@ -196,12 +196,12 @@ params:
     prior:
       dist: norm
       loc: 0.065
-      scale: 0.0015
+      scale: 0.015
     ref:
       dist: norm
       loc: 0.065
-      scale: 0.0015
-    proposal: 0.001
+      scale: 0.015
+    proposal: 0.01
     latex: \tau_\mathrm{reio}
   zrei:
     latex: z_\mathrm{re}

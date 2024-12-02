@@ -108,12 +108,12 @@ params:
     prior:
       dist: norm
       loc: 0.065
-      scale: 0.0015
+      scale: 0.015
     ref:
       dist: norm
       loc: 0.065
-      scale: 0.0015
-    proposal: 0.001
+      scale: 0.015
+    proposal: 0.01
     latex: \tau_\mathrm{reio}
   zrei:
     latex: z_\mathrm{re}
@@ -147,3 +147,4 @@ sampler:
     Rminus1_stop: 0.01 # usually have this to 0.1 for a typical run. 0.01 is publication quality
     Rminus1_cl_stop: 0.2
 output: act-tau-chains/lcdm
+force: true
