@@ -8,7 +8,7 @@ from getdist import plots
 # specify chain file root
 # chain_root = "./spt-tau-chains/lcdm_comp"
 # chain_root = "./act-tau-chains/lcdm"
-chain_root = "./act-desi-pantheon-chains/w0wa"
+chain_root = "./act-wmap-chains/lcdm"
 
 # directory and base name
 chain_dir = os.path.dirname(chain_root)
@@ -38,10 +38,10 @@ samples = getdist.loadMCSamples(chain_root, settings={"ignore_rows": 0.3})
 # params = ["H0", "ombh2", "omch2", "theta_MC_100", "Ase2tau", "ns"]
 
 # act_tau
-# params = ["H0", "ombh2", "omch2", "theta_MC_100", "tau", "ns", "logA"]
+params = ["H0", "ombh2", "omch2", "theta_MC_100", "tau", "ns", "logA"]
 
 # act desi pantheon for w0waCDM model
-params = ["omch2", "ombh2", "theta_MC_100", "tau", "ns", "logA", "w", "wa"]
+# params = ["omch2", "ombh2", "theta_MC_100", "tau", "ns", "logA", "w", "wa"]
 # printing R-1 value
 print("R-1 =", samples.getGelmanRubin())
 
